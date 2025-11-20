@@ -377,8 +377,8 @@ coverage report
 **Project Maintainer:** Andria Fraderick
 
 - Email: andriafraderick02@gmail.com.com
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
+- GitHub: [@andriafraderick](https://github.com/andriafraderick)
+- LinkedIn: [Andria Fraderick](https://www.linkedin.com/in/andriafraderick/)
 
 **Project Link:** [https://github.com/andriafraderick/e-learning-platform] (https://github.com/andriafraderick/e-learning-platform.git)
 
