@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}Make Payment{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header"><h4>Payment for {{ enrollment.course.name }}</h4></div>
+            <div class="card-body">
+                <p><strong>Course Fee:</strong> ₹{{ enrollment.course.fee }}</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label">Amount</label>
+                        {{ form.amount }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Payment Method</label>
+                        {{ form.payment_method }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Transaction ID</label>
+                        {{ form.transaction_id }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Notes</label>
+                        {{ form.notes }}
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Complete Payment</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

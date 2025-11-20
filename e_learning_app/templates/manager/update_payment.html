@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Update Payment{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header"><h4><i class="fas fa-edit"></i> Update Payment Details</h4></div>
+            <div class="card-body">
+                <p><strong>Student:</strong> {{ payment.enrollment.student.get_full_name }}</p>
+                <p><strong>Course:</strong> {{ payment.enrollment.course.name }}</p>
+                <hr>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label">Amount</label>
+                        {{ form.amount }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Payment Method</label>
+                        {{ form.payment_method }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Payment Status</label>
+                        {{ form.status }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Transaction ID</label>
+                        {{ form.transaction_id }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Notes</label>
+                        {{ form.notes }}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update Payment</button>
+                    <a href="{% url 'manager_view_payments' %}" class="btn btn-secondary">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

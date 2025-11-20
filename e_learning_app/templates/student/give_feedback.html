@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Give Feedback{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header"><h4>Give Course Feedback</h4></div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label">Select Course</label>
+                        {{ form.course }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Rating (1-5)</label>
+                        {{ form.rating }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Comments</label>
+                        {{ form.comment }}
+                    </div>
+                    <button type="submit" class="btn btn-success">Submit Feedback</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

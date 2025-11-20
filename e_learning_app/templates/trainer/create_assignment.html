@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}Create Assignment{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header"><h4>Create New Assignment</h4></div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label">Course</label>
+                        {{ form.course }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Title</label>
+                        {{ form.title }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        {{ form.description }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Due Date</label>
+                        {{ form.due_date }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Maximum Marks</label>
+                        {{ form.max_marks }}
+                    </div>
+                    <button type="submit" class="btn btn-success">Create Assignment</button>
+                    <a href="{% url 'trainer_manage_assignments' %}" class="btn btn-secondary">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

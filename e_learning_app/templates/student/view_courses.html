@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}My Courses{% endblock %}
+{% block content %}
+<h2 class="mb-4"><i class="fas fa-book"></i> My Courses</h2>
+<div class="row">
+    {% for enrollment in enrollments %}
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ enrollment.course.name }}</h5>
+                <p class="card-text">{{ enrollment.course.description|truncatewords:20 }}</p>
+                <p><strong>Trainer:</strong> {{ enrollment.course.trainer.get_full_name }}</p>
+                <p><strong>Progress:</strong></p>
+                <div class="progress mb-2">
+                    <div class="progress-bar bg-success" style="width: {{ enrollment.progress_percentage }}%">
+                        {{ enrollment.progress_percentage }}%
+                    </div>
+                </div>
+                <span class="badge bg-{{ enrollment.status|yesno:'success,warning' }}">
+                    {{ enrollment.get_status_display }}
+                </span>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12">
+        <div class="alert alert-info">No active courses. <a href="{% url 'student_dashboard' %}">Enroll now</a></div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

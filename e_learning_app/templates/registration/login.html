@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - E-Learning Platform{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header text-center">
+                <h4><i class="fas fa-sign-in-alt"></i> Login to Your Account</h4>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label">Username</label>
+                        {{ form.username }}
+                        {% if form.username.errors %}
+                            <div class="text-danger">{{ form.username.errors }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        {{ form.password }}
+                        {% if form.password.errors %}
+                            <div class="text-danger">{{ form.password.errors }}</div>
+                        {% endif %}
+                    </div>
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+                    {% endif %}
+                    <button type="submit" class="btn btn-primary w-100">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                </form>
+            </div>
+            <div class="card-footer text-center">
+                <p class="mb-0">Don't have an account? 
+                    <a href="{% url 'student_register' %}">Register as Student</a> | 
+                    <a href="{% url 'trainer_register' %}">Register as Trainer</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
